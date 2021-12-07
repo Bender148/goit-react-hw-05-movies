@@ -12,11 +12,9 @@ class App extends Component {
     bad: 0,
   };
 
-  countFeedback = (event) => {
-    const { name } = event.currentTarget;
-
+  countFeedback = (value) => {
     this.setState((prevState) => ({
-      [name]: prevState[name] + 1,
+      [value]: prevState[value] + 1,
     }));
   };
 
@@ -26,9 +24,9 @@ class App extends Component {
   };
 
   countPositiveFeedbackPercentage = () => {
-    return this.countTotalFeedback()
-      ? Math.round((this.state.good / this.countTotalFeedback()) * 100)
-      : 0;
+    if (this.state.good > 0) {
+      return Math.round((this.state.good * 100) / this.countTotalFeedback());
+    }
   };
 
   render() {
