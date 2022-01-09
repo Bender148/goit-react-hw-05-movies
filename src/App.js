@@ -1,56 +1,51 @@
-import React, { useState } from "react";
-import Section from "./components/Section";
-import Title from './components/Title';
-import Statistics from "./components/Statistics";
-import FeedbackOptions from "./components/FeedbackOptions";
-import Notification from "./components/Notification";
+// React imports
+import React, { Suspense, lazy } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+// Components imports
+import AppBar from './components/AppBar';
+// import Footer from './components/Footer';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
+// Routes imports
+import routes from './routes';
+
+// Views imports
+// Lazy loading for views
+const HomePage = lazy(() =>
+  import('./views/HomePage.js' /* webpackChunkName: "home-page" */),
+);
+const MoviesPage = lazy(() =>
+  import('./views/MoviesPage.js' /* webpackChunkName: "movies-page" */),
+);
+const MovieDetailsPage = lazy(() =>
+  import('./views/MovieDetailsPage.js' /* webpackChunkName: "details-page" */),
+);
 
 const App = () => {
-  const [feedback, setFeedback] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  });
-
-  const countFeedback = event => {
-    const { name } = event.currentTarget;
-    setFeedback(feedback => ({ ...feedback, [name]: feedback[name] + 1 }));
-  };
-
-  const countTotalFeedback = () => {
-    return Object.values(feedback).reduce(
-      (total, quantity) => total + quantity,
-    );
-  };
-
-  const countPositiveFeedbackPercentage = () => {
-    return countTotalFeedback()
-      ? Math.round((feedback.good / countTotalFeedback()) * 100)
-      : 0;
-  };
-
-  const total = countTotalFeedback();
-  const positivePercentage = countPositiveFeedbackPercentage();
-
   return (
     <>
-      <Title title="Espresso Cafe Stats" />
-
-      <Section title="Please leave your feedback">
-        <FeedbackOptions feedback={feedback} onLeaveFeedback={countFeedback} />
-      </Section>
-
-      <Section title="Statistics">
-        {total ? (
-          <Statistics
-            feedback={feedback}
-            total={total}
-            positivePercentage={positivePercentage}
+      <AppBar />
+      <Suspense
+        fallback={
+          <Loader
+            type="TailSpin"
+            color="#80cbc4"
+            height={80}
+            width={80}
+            className="loader"
           />
-        ) : (
-          <Notification message="No feedback given" />
-        )}
-      </Section>
+        }
+      >
+        <Switch>
+          <Route exact path={routes.home} component={HomePage} />
+          <Route exact path={routes.movieSearch} component={MoviesPage} />
+          <Route path={routes.movieDetails} component={MovieDetailsPage} />
+          <Route component={HomePage} />
+        </Switch>
+      </Suspense>
+      {/* <Footer /> */}
     </>
   );
 };
