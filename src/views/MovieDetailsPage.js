@@ -16,11 +16,11 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // Lazy imports
 const Cast = lazy(() =>
-  import('../components/Cast' /* webpackChunkName: "cast-section" */),
+  import('../components/Cast'),
 );
 
 const Reviews = lazy(() =>
-  import('../components/Reviews' /* webpackChunkName: "reviews-section" */),
+  import('../components/Reviews'),
 );
 class MovieDetailsPage extends Component {
   state = {

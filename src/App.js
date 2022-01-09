@@ -12,15 +12,14 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import routes from './routes';
 
 // Views imports
-// Lazy loading for views
 const HomePage = lazy(() =>
-  import('./views/HomePage.js' /* webpackChunkName: "home-page" */),
+  import('./views/HomePage.js'),
 );
 const MoviesPage = lazy(() =>
-  import('./views/MoviesPage.js' /* webpackChunkName: "movies-page" */),
+  import('./views/MoviesPage.js'),
 );
 const MovieDetailsPage = lazy(() =>
-  import('./views/MovieDetailsPage.js' /* webpackChunkName: "details-page" */),
+  import('./views/MovieDetailsPage.js'),
 );
 
 const App = () => {

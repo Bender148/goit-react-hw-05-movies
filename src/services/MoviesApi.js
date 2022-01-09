@@ -1,8 +1,8 @@
 // Importing axios library
 import axios from 'axios';
 
-// Declaring API key and base url for fetches (not getting images though)
-const API_KEY = process.env.REACT_APP_API_KEY;
+// Declaring API key and base url for fetches
+const API_KEY = '16223fe9c5e964ded75cf49a9bba049a';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 //Funciton to fetch trending movies
