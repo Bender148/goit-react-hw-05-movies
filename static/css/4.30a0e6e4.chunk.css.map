@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Reviews/Reviews.module.css"],"names":[],"mappings":"AAAA,2BACI,YAAa,CACb,kBACJ,CAEA,6BACI,iBAAkB,CAClB,cACJ","file":"4.30a0e6e4.chunk.css","sourcesContent":[".ReviewCard {\r\n    display: flex;\r\n    margin-bottom: 20px;\r\n}\r\n  \r\n.imageSection {\r\n    margin-right: 20px;\r\n    min-width: 80px;\r\n}"]}
