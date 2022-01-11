@@ -1,5 +1,5 @@
 // React imports
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component, lazy } from 'react';
 import { Route } from 'react-router-dom';
 
 // Components imports
@@ -11,7 +11,7 @@ import ExtraInfoBar from '../components/ExtraInfoBar';
 //  Functions and external libraries imports
 import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
 import _ from 'lodash';
-import Loader from 'react-loader-spinner';
+
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // Lazy imports
@@ -50,18 +50,6 @@ class MovieDetailsPage extends Component {
           <MovieCard movie={movie} />
           <BtnBack location={location} history={history} />
           <ExtraInfoBar url={url} location={location} />
-
-          <Suspense
-            fallback={
-              <Loader
-                type="TailSpin"
-                color="#80cbc4"
-                height={80}
-                width={80}
-                className="loader"
-              />
-            }
-          >
             <Route
               path={`${path}/cast`}
               render={props => <Cast {...props} cast={cast} />}
@@ -76,7 +64,6 @@ class MovieDetailsPage extends Component {
                 )
               }
             />
-          </Suspense>
         </Section>
       );
     } else {

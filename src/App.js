@@ -1,49 +1,27 @@
 // React imports
-import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Components imports
 import AppBar from './components/AppBar';
-// import Footer from './components/Footer';
-import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-// Routes imports
-import routes from './routes';
-
 // Views imports
-const HomePage = lazy(() =>
-  import('./views/HomePage.js'),
-);
-const MoviesPage = lazy(() =>
-  import('./views/MoviesPage.js'),
-);
-const MovieDetailsPage = lazy(() =>
-  import('./views/MovieDetailsPage.js'),
-);
+import Home from './views/HomePage';
+import MoviesSearch from './views/MoviesPage';
+import MoviePage from './views/MovieDetailsPage';
 
 const App = () => {
   return (
     <>
       <AppBar />
-      <Suspense
-        fallback={
-          <Loader
-            type="TailSpin"
-            color="#80cbc4"
-            height={80}
-            width={80}
-            className="loader"
-          />
-        }
-      >
+      
         <Switch>
-          <Route exact path={routes.home} component={HomePage} />
-          <Route exact path={routes.movieSearch} component={MoviesPage} />
-          <Route path={routes.movieDetails} component={MovieDetailsPage} />
-          <Route component={HomePage} />
+          <Route path="/" exact component={Home} />
+          <Route path="/movies" exact component={MoviesSearch} />
+          <Route path="/movies/:movieId" component={MoviePage} />
+          <Redirect to="/" />
         </Switch>
-      </Suspense>
+      
       {/* <Footer /> */}
     </>
   );
