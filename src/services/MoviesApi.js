@@ -1,7 +1,7 @@
 // Importing axios library
 import axios from 'axios';
 
-// Declaring API key and base url for fetches
+// Declaring API key and base url for fetches (not getting images though)
 const API_KEY = '16223fe9c5e964ded75cf49a9bba049a';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
