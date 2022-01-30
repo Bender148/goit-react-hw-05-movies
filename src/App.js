@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Components imports
 import AppBar from './components/AppBar';
-import Loader from 'react-loader-spinner';
+import {TailSpin} from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // Views imports
@@ -18,8 +18,7 @@ const App = () => {
       <AppBar />
       <Suspense
         fallback={
-          <Loader
-            type="TailSpin"
+          <TailSpin
             color="#80cbc4"
             height={80}
             width={80}

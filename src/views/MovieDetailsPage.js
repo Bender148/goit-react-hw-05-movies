@@ -11,7 +11,7 @@ import ExtraInfoBar from '../components/ExtraInfoBar';
 //  Functions and external libraries imports
 import { fetchMovie, fetchCast, fetchReviews } from '../services/moviesApi';
 import _ from 'lodash';
-import Loader from 'react-loader-spinner';
+import {TailSpin} from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 
@@ -54,8 +54,7 @@ class MovieDetailsPage extends Component {
           
           <Suspense
             fallback={
-              <Loader
-                type="TailSpin"
+              <TailSpin
                 color="#80cbc4"
                 height={80}
                 width={80}

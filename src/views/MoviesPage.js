@@ -10,7 +10,7 @@ import Search from '../components/Search';
 //  Functions and external libraries imports
 import { fetchSearchedMovies } from '../services/moviesApi';
 import queryString from 'query-string';
-import Loader from 'react-loader-spinner';
+import {TailSpin} from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 class MoviesPage extends Component {
@@ -66,8 +66,7 @@ class MoviesPage extends Component {
         </MoviesList>
 
         {isLoading && (
-          <Loader
-            type="TailSpin"
+          <TailSpin
             color="#009688"
             height={80}
             width={80}
